@@ -1,0 +1,16 @@
+
+<h1><%= notice %></h1>
+
+<h1>Login Form</h1>
+
+<%= form_tag(session_login_path, :method => :post ) do %>
+  <%= label_tag 'username', 'Username: ' %>
+  <%= text_field_tag 'username', nil, :placeholder => "Your Username" %>
+  <br/> <br/>
+  <%= label_tag 'password', 'Password: ' %>
+  <%= password_field_tag 'password' %>
+  <br/> <br/>
+  <%= submit_tag 'Login' %>
+  <br/> <br/>
+<% end%>
+<%= link_to 'Sign Up',new_users_path %>

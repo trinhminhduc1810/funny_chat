@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'factory_girl'
+
 
 describe User do
   let!(:user) {FactoryGirl.create(:user)}

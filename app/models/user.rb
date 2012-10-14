@@ -26,7 +26,6 @@ class User < ActiveRecord::Base
     if password.present?
       self.password_salt = Engine.generate_salt
       self.password_hash = Engine.hash_secret(password, password_salt)
-      password = nil
     end
   end
 end

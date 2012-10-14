@@ -1,8 +1,14 @@
 FunnyChat::Application.routes.draw do
+  get "chat/main"
+
   controller :session do
     get '/session/new' => :new
     post '/session/login' => :login
     get '/session/logout' => :logout
+  end
+
+  controller :chat do
+    get '/chat/main' => :main
   end
 
   resource :users

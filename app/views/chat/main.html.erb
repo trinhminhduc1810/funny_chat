@@ -1,0 +1,8 @@
+<% content_for(:head) do %>
+    <%= javascript_include_tag "chat/main" %>
+<% end %>
+<h1><%= notice %></h1>
+
+<h1> main page</h1>
+
+<%= link_to "Log out", session_logout_path %>

@@ -4,22 +4,43 @@ $("document").ready(function(){
 
 function add_friend(){
     data = {username: $("#friend_username").val()};
-    sendRequest("POST","/chat/add_friend",data);
+    sendRequest("POST","/chat/add_friend",data,"add_friend");
+    $("#friend_username").val("");
 }
 
-function sendRequest(method,url,data) {
+function sendRequest(method,url,data,action) {
     $.ajax({
         type: method,
         url: url,
         data: data,
         success: function(data) {
-            update_friend_list(data);
+            call_back_action(data,action);
         }
     }
     );
 }
 
-function update_friend_list(data) {
+function call_back_action(data,action) {
+    switch(action)
+    {
+        case "add_friend":
+            add_friend_list(data);
+            break;
+        default:
+            break;
+    }
+
+}
+
+function build_friend(name){
+    var remove_link = "<a href='/chat/remove_friend?username="+name+"'>remove</a>";
+    return "<li>"+name+"-------"+remove_link+"</li>";
+}
+
+function add_friend_list(data) {
     alert(data.status);
+    if (data.friend) {
+        $("#friend_list").append(build_friend(data.friend));
+    }
 }
 

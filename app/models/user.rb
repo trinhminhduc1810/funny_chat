@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   attr_accessor :password
 
   validates :full_name, presence:true
-  validates :username, :length => { :minimum => 5}
+  validates :username, :uniqueness => true, :length => { :minimum => 5}
   validates :email, presence:true, uniqueness:true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   validates_confirmation_of :password
   validates :password, :length => { :minimum => 7}
@@ -27,5 +27,15 @@ class User < ActiveRecord::Base
       self.password_salt = Engine.generate_salt
       self.password_hash = Engine.hash_secret(password, password_salt)
     end
+  end
+
+  def user_friend_list
+    a = Array.new
+    i = 0
+    self.friend_lists.each do |friend|
+      a[i] = User.find_by_id(friend.friend_id)
+      i+=1
+    end
+    return a
   end
 end

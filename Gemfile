@@ -9,7 +9,7 @@ gem 'sqlite3'
 gem 'thin'
 gem 'faye'
 gem 'bcrypt-ruby', :require => "bcrypt"
-#gem 'hirb'
+gem 'hirb'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

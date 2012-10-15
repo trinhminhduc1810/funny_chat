@@ -10,6 +10,7 @@ FunnyChat::Application.routes.draw do
   controller :chat do
     get '/chat/main' => :main
     post '/chat/add_friend' => :add_friend
+    get '/chat/remove_friend' => :remove_friend
   end
 
   resource :users

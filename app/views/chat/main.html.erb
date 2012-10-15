@@ -9,3 +9,9 @@
 <%= button_tag "Add Friend", :id => "add_friend_button" %>
 <br/><br/>
 <%= link_to "Log out", session_logout_path %>
+
+<ul id="friend_list">
+ <% @friend_list.each do |friend| %>
+    <li><%= friend.username %>-------<%= link_to "remove", chat_remove_friend_path(:username => friend.username) %></li>
+ <% end %>
+</ul>

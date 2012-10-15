@@ -1,7 +1,7 @@
 include BCrypt
 
 class User < ActiveRecord::Base
-
+  has_many :friend_lists, :dependent => :destroy
   attr_accessible :full_name, :username, :email, :password, :password_confirmation
   attr_accessor :password
 
